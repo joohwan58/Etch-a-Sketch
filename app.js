@@ -35,7 +35,6 @@ function color(element) {
     }
 }
 
-
 sketchArea.childNodes.forEach((element) => {
     element.addEventListener('mousedown', () => {
         drawing = true;
@@ -47,4 +46,13 @@ sketchArea.childNodes.forEach((element) => {
     element.addEventListener('mouseup', () => {
         drawing = false;
     });
+});
+
+const eraser = document.querySelector('.eraser');
+eraser.addEventListener("click", () => {
+    if (drawColor === '#ffffff') {
+        drawColor = drawColorPicker.value;
+    } else {
+        drawColor = '#ffffff';
+    }
 });
