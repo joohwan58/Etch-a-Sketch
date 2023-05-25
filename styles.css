@@ -25,6 +25,11 @@ h1 {
 .buttons {
     border: 3px solid #33ccff;
 }
+
+.slider-display{
+    color: azure;
+}
+
 .sketch-container {
     flex-shrink: 0;
     background-color: white;
@@ -36,6 +41,7 @@ h1 {
 }
 
 .sketch {
+    background-color: white;
     box-sizing: border-box;
     border: 1px solid rgb(156, 156, 156);
 }
