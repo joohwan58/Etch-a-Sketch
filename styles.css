@@ -1,0 +1,41 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20%;
+}
+
+h1 {
+    color: #33ccff;
+    align-self: center;
+    margin-bottom: 60px;
+    font-size: 46px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+
+.buttons {
+    border: 3px solid #33ccff;
+}
+.sketch-container {
+    flex-shrink: 0;
+    background-color: white;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(156, 156, 156);
+}
+
+.sketch {
+    box-sizing: border-box;
+    border: 1px solid rgb(156, 156, 156);
+}
