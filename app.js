@@ -14,7 +14,7 @@ function createGrid(n) {
     sketchArea.replaceChildren();
     for (let i = 0; i < (n * n); i ++) {
         const grid = document.createElement('div');
-        grid.className = 'sketch';
+        grid.classList.add('sketch', 'grid-border');
         let size = GRID_SIZE / n;
         grid.style.flexBasis = `${size}px`
         grid.style.width = `${size}px`;
@@ -78,3 +78,10 @@ function chooseRandomColor() {
     let blue = Math.round(Math.random() * 255);
     return "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
 }
+
+const borderToggle = document.querySelector(".border-toggle");
+borderToggle.addEventListener('click', () => {
+    sketchArea.childNodes.forEach((element) => {
+        element.classList.toggle('grid-border');
+    });
+});
