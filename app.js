@@ -31,7 +31,12 @@ slider.addEventListener('input', () => {
 
 function color(element) {
     if (drawing) {
-        element.style.backgroundColor = drawColor;
+        if (toggleRainbow) {
+            element.style.backgroundColor = chooseRandomColor();
+            return;
+        } else {
+            element.style.backgroundColor = drawColor;
+        }
     }
 }
 
@@ -56,3 +61,20 @@ eraser.addEventListener("click", () => {
         drawColor = '#ffffff';
     }
 });
+
+const rainbow = document.querySelector('.rainbow');
+let toggleRainbow = false;
+rainbow.addEventListener("click", () => {
+    if (toggleRainbow) {
+        toggleRainbow = false;
+    } else {
+        toggleRainbow = true;
+    }
+})
+
+function chooseRandomColor() {
+    let red = Math.round(Math.random() * 255);
+    let green = Math.round(Math.random() * 255);
+    let blue = Math.round(Math.random() * 255);
+    return "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
+}
