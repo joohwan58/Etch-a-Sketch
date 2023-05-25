@@ -3,6 +3,7 @@ const GRID_SIZE = 600;
 const sketchArea = document.querySelector('.sketch-container');
 
 createGrid(16);
+let drawing = false;
 
 function createGrid(n) {
     sketchArea.replaceChildren();
@@ -24,11 +25,19 @@ slider.addEventListener('input', () => {
 });
 
 function color(element) {
-    element.style.backgroundColor = 'black';
+    if (drawing) {
+        element.style.backgroundColor = 'black';
+    }
 }
 
 sketchArea.childNodes.forEach((element) => {
-    element.addEventListener('click', () => {
+    element.addEventListener('mousedown', () => {
+        drawing = true;
+    });
+    element.addEventListener('mouseover', () => {
         color(element);
+    });
+    element.addEventListener('mouseup', () => {
+        drawing = false;
     });
 });
