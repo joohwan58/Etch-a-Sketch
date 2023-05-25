@@ -20,27 +20,7 @@ function createGrid(n) {
         grid.style.width = `${size}px`;
         sketchArea.appendChild(grid);
     }
-}
-
-const slider = document.querySelector(".slider");
-const sliderDisplay = document.querySelector(".slider-display");
-slider.addEventListener('input', () => {
-    sliderDisplay.textContent = `${slider.value} x ${slider.value}`;
-    createGrid(slider.value);
-});
-
-function color(element) {
-    if (drawing) {
-        if (toggleRainbow) {
-            element.style.backgroundColor = chooseRandomColor();
-            return;
-        } else {
-            element.style.backgroundColor = drawColor;
-        }
-    }
-}
-
-sketchArea.childNodes.forEach((element) => {
+    sketchArea.childNodes.forEach((element) => {
     element.addEventListener('mousedown', () => {
         drawing = true;
         color(element);
@@ -52,14 +32,33 @@ sketchArea.childNodes.forEach((element) => {
         drawing = false;
     });
 });
+}
 
+const slider = document.querySelector(".slider");
+const sliderDisplay = document.querySelector(".slider-display");
+slider.addEventListener('input', () => {
+    sliderDisplay.textContent = `${slider.value} x ${slider.value}`;
+    createGrid(slider.value);
+});
+
+function color(element) {
+    if (drawing) {
+        if (erase) {
+            element.style.backgroundColor = '#ffffff';
+            return;
+        }
+        if (toggleRainbow) {
+            element.style.backgroundColor = chooseRandomColor();
+            return;
+        }
+        element.style.backgroundColor = drawColor;
+        }
+}
+
+let erase = false;
 const eraser = document.querySelector('.eraser');
 eraser.addEventListener("click", () => {
-    if (drawColor === '#ffffff') {
-        drawColor = drawColorPicker.value;
-    } else {
-        drawColor = '#ffffff';
-    }
+    erase = !erase;
 });
 
 const rainbow = document.querySelector('.rainbow');
@@ -84,4 +83,9 @@ borderToggle.addEventListener('click', () => {
     sketchArea.childNodes.forEach((element) => {
         element.classList.toggle('grid-border');
     });
+});
+
+const clear = document.querySelector(".clear");
+clear.addEventListener('click', () => {
+    createGrid(slider.value);
 });
