@@ -1,6 +1,11 @@
 const GRID_SIZE = 600;
 
 const sketchArea = document.querySelector('.sketch-container');
+const drawColorPicker = document.querySelector('.draw-color-picker');
+let drawColor = '#000000';
+drawColorPicker.addEventListener('input', () => {
+    drawColor = drawColorPicker.value;
+});
 
 createGrid(16);
 let drawing = false;
@@ -26,7 +31,7 @@ slider.addEventListener('input', () => {
 
 function color(element) {
     if (drawing) {
-        element.style.backgroundColor = 'black';
+        element.style.backgroundColor = drawColor;
     }
 }
 
