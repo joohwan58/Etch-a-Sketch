@@ -30,9 +30,11 @@ function color(element) {
     }
 }
 
+
 sketchArea.childNodes.forEach((element) => {
     element.addEventListener('mousedown', () => {
         drawing = true;
+        color(element);
     });
     element.addEventListener('mouseover', () => {
         color(element);
