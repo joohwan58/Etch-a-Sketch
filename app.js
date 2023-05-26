@@ -64,11 +64,7 @@ eraser.addEventListener("click", () => {
 const rainbow = document.querySelector('.rainbow');
 let toggleRainbow = false;
 rainbow.addEventListener("click", () => {
-    if (toggleRainbow) {
-        toggleRainbow = false;
-    } else {
-        toggleRainbow = true;
-    }
+    toggleRainbow = !toggleRainbow;
 })
 
 function chooseRandomColor() {
@@ -78,14 +74,30 @@ function chooseRandomColor() {
     return "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
 }
 
+let bordered = true;
+
 const borderToggle = document.querySelector(".border-toggle");
 borderToggle.addEventListener('click', () => {
     sketchArea.childNodes.forEach((element) => {
         element.classList.toggle('grid-border');
     });
+    bordered = !bordered;
+    if (bordered) {
+        borderToggle.classList.add('activated');
+        borderToggle.textContent = 'Toggle grid border: On';
+    } else {
+        borderToggle.classList.remove('activated');
+        borderToggle.textContent = 'Toggle grid border: Off'
+    }
+    
 });
 
 const clear = document.querySelector(".clear");
 clear.addEventListener('click', () => {
     createGrid(slider.value);
 });
+
+function resetButtons() {
+    rainbow.classList.remove('activated');
+    eraser.classList.remove('activated');
+}
