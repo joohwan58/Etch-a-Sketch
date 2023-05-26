@@ -73,6 +73,15 @@ span {
     align-items: center;
 }
 
+.slider {
+    width: 100%;
+    height: 2px;
+    background: #404040;
+    appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+
 .sketch-container {
     flex-shrink: 0;
     background-color: white;
