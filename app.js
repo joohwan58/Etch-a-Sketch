@@ -59,12 +59,18 @@ let erase = false;
 const eraser = document.querySelector('.eraser');
 eraser.addEventListener("click", () => {
     erase = !erase;
+    toggleRainbow = false;
+    resetButtons();
+    eraser.classList.add('activated');
 });
 
 const rainbow = document.querySelector('.rainbow');
 let toggleRainbow = false;
 rainbow.addEventListener("click", () => {
     toggleRainbow = !toggleRainbow;
+    erase = false;
+    resetButtons();
+    rainbow.classList.add('activated');
 })
 
 function chooseRandomColor() {
