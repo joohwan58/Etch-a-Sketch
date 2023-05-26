@@ -1,11 +1,23 @@
 const GRID_SIZE = 600;
+const DEFAULT_COLOR = '#000000';
+const SHADER_1 = '#ffffff'
+const SHADER_2 = '#e1e1e1'
+const SHADER_3 = '#c8c8c8'
+const SHADER_4 = '#afafaf'
+const SHADER_5 = '#969696'
+const SHADER_6 = '#7d7d7d'
+const SHADER_7 = '#646464'
+const SHADER_8 = '#4b4b4b'
+const SHADER_9 = '#323232'
+const SHADER_10 = '#191919'
 
 const sketchArea = document.querySelector('.sketch-container');
 const drawColorPicker = document.querySelector('.draw-color-picker');
-let drawColor = '#000000';
+let drawColor = DEFAULT_COLOR;
 drawColorPicker.addEventListener('input', () => {
     drawColor = drawColorPicker.value;
 });
+
 
 createGrid(16);
 let drawing = false;
@@ -51,6 +63,9 @@ function color(element) {
             element.style.backgroundColor = chooseRandomColor();
             return;
         }
+        if (shaded) {
+            let opacity = getComputedStyle(element).backgroundColor.split(",");
+        }
         element.style.backgroundColor = drawColor;
         }
 }
@@ -86,6 +101,9 @@ const shading = document.querySelector('.shading');
 let shaded = false;
 shading.addEventListener('click', () => {
     shaded = !shaded;
+    erase = false;
+    toggleRainbow = false;
+
     resetButtons();
     shading.classList.add('activated');
 });
