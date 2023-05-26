@@ -60,6 +60,7 @@ const eraser = document.querySelector('.eraser');
 eraser.addEventListener("click", () => {
     erase = !erase;
     toggleRainbow = false;
+    shaded = false;
     resetButtons();
     eraser.classList.add('activated');
 });
@@ -69,6 +70,7 @@ let toggleRainbow = false;
 rainbow.addEventListener("click", () => {
     toggleRainbow = !toggleRainbow;
     erase = false;
+    shaded = false;
     resetButtons();
     rainbow.classList.add('activated');
 })
@@ -80,8 +82,15 @@ function chooseRandomColor() {
     return "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
 }
 
-let bordered = true;
+const shading = document.querySelector('.shading');
+let shaded = false;
+shading.addEventListener('click', () => {
+    shaded = !shaded;
+    resetButtons();
+    shading.classList.add('activated');
+});
 
+let bordered = true;
 const borderToggle = document.querySelector(".border-toggle");
 borderToggle.addEventListener('click', () => {
     sketchArea.childNodes.forEach((element) => {
@@ -106,4 +115,5 @@ clear.addEventListener('click', () => {
 function resetButtons() {
     rainbow.classList.remove('activated');
     eraser.classList.remove('activated');
+    shading.classList.remove('activated');
 }
