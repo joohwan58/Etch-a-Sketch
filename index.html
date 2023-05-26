@@ -11,14 +11,22 @@
 <body>
     <h1>Etch-a-Sketch</h1>
     <div class="content">
-        <div class="buttons">
-            <input type="color" class="draw-color-picker" value="#000000">
-            <input type="range" min="1" max="64" value="16" class="slider">
-            <p class="slider-display">16 x 16</p>
-            <button class="eraser">Toggle Eraser</button>
-            <button class="rainbow">Toggle Rainbow</button>
-            <button class="border-toggle">Toggle grid border</button>
-            <button class="clear">Clear</button>
+        <div class="ui">
+            <div class="color-container">
+                <input type="color" class="draw-color-picker" value="#000000">
+                <span>Pen color</span>
+            </div>
+            <div class="container">
+                <button class="eraser button">Toggle Eraser</button>
+                <button class="rainbow button">Toggle Rainbow</button>
+                <button class="border-toggle button">Toggle grid border</button>
+            </div>
+            <div class="container">
+                <input type="range" min="1" max="64" value="16" class="slider">
+                <div class="slider-display">Grid size:</div>
+                <div class="slider-display">16 x 16</div>
+                <button class="clear button">Clear</button>
+            </div>
         </div>
         <div class="sketch-container"></div>
     </div>
