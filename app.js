@@ -64,7 +64,12 @@ function color(element) {
             return;
         }
         if (shaded) {
-            let opacity = getComputedStyle(element).backgroundColor.split(",");
+            let backgroundColorArray = getComputedStyle(element).backgroundColor.split(",");
+            let opacity = backgroundColorArray[3].slice(0, -1);
+            let newOpacity = parseFloat(opacity) + 0.1;
+            let newBackgroundColor = backgroundColorArray[0] + "," + backgroundColorArray[1] + "," + backgroundColorArray[2] + "," + ` ${newOpacity}` + ")"
+            element.style.backgroundColor = newBackgroundColor;
+            return;
         }
         element.style.backgroundColor = drawColor;
         }
