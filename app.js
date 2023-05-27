@@ -142,6 +142,10 @@ borderToggle.addEventListener('click', () => {
 const clear = document.querySelector(".clear");
 clear.addEventListener('click', () => {
     createGrid(slider.value);
+    resetButtons();
+    shaded = false;
+    erase = false;
+    toggleRainbow = false;
 });
 
 function resetButtons() {
