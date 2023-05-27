@@ -19,14 +19,18 @@ drawColorPicker.addEventListener('input', () => {
 });
 
 
-createGrid(16);
 let drawing = false;
+let bordered = true;
+createGrid(16);
 
 function createGrid(n) {
     sketchArea.replaceChildren();
     for (let i = 0; i < (n * n); i ++) {
         const grid = document.createElement('div');
-        grid.classList.add('sketch', 'grid-border');
+        grid.classList.add('sketch');
+        if (bordered) {
+            grid.classList.add('grid-border');
+        }
         let size = GRID_SIZE / n;
         grid.style.flexBasis = `${size}px`
         grid.style.width = `${size}px`;
@@ -82,7 +86,9 @@ eraser.addEventListener("click", () => {
     toggleRainbow = false;
     shaded = false;
     resetButtons();
-    eraser.classList.add('activated');
+    if (erase == true) {
+        eraser.classList.add('activated');
+    }
 });
 
 const rainbow = document.querySelector('.rainbow');
@@ -92,7 +98,9 @@ rainbow.addEventListener("click", () => {
     erase = false;
     shaded = false;
     resetButtons();
-    rainbow.classList.add('activated');
+    if (toggleRainbow == true) {
+        rainbow.classList.add('activated');
+    }
 })
 
 function chooseRandomColor() {
@@ -108,12 +116,13 @@ shading.addEventListener('click', () => {
     shaded = !shaded;
     erase = false;
     toggleRainbow = false;
-
     resetButtons();
-    shading.classList.add('activated');
+    drawColorPicker.value = "#000000";
+    if (shaded == true) {
+        shading.classList.add('activated');
+    }
 });
 
-let bordered = true;
 const borderToggle = document.querySelector(".border-toggle");
 borderToggle.addEventListener('click', () => {
     sketchArea.childNodes.forEach((element) => {
